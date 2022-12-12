@@ -2,15 +2,5 @@
 
 Movie app with redux
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<a href="url"><img src="https://user-images.githubusercontent.com/67394249/207085425-3a01aa3b-dafc-4e75-8996-9aab78e7d2f3.png" align="left" height=35% width=35% ></a>
+<a href="url"><img src="https://user-images.githubusercontent.com/67394249/207085437-698e30e2-1552-4119-b598-fbbc81c8b798.png" align="left" height=35% width=35% 
