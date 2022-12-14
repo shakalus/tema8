@@ -20,6 +20,7 @@ Movie _$MovieFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Movie {
+  int get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   int get year => throw _privateConstructorUsedError;
   num get rating => throw _privateConstructorUsedError;
@@ -38,10 +39,12 @@ mixin _$Movie {
 
 /// @nodoc
 abstract class $MovieCopyWith<$Res> {
-  factory $MovieCopyWith(Movie value, $Res Function(Movie) then) = _$MovieCopyWithImpl<$Res, Movie>;
+  factory $MovieCopyWith(Movie value, $Res Function(Movie) then) =
+      _$MovieCopyWithImpl<$Res, Movie>;
   @useResult
   $Res call(
-      {String title,
+      {int id,
+      String title,
       int year,
       num rating,
       int runtime,
@@ -52,7 +55,8 @@ abstract class $MovieCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$MovieCopyWithImpl<$Res, $Val extends Movie> implements $MovieCopyWith<$Res> {
+class _$MovieCopyWithImpl<$Res, $Val extends Movie>
+    implements $MovieCopyWith<$Res> {
   _$MovieCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -63,6 +67,7 @@ class _$MovieCopyWithImpl<$Res, $Val extends Movie> implements $MovieCopyWith<$R
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? title = null,
     Object? year = null,
     Object? rating = null,
@@ -73,6 +78,10 @@ class _$MovieCopyWithImpl<$Res, $Val extends Movie> implements $MovieCopyWith<$R
     Object? torrents = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -111,11 +120,13 @@ class _$MovieCopyWithImpl<$Res, $Val extends Movie> implements $MovieCopyWith<$R
 
 /// @nodoc
 abstract class _$$Movie$CopyWith<$Res> implements $MovieCopyWith<$Res> {
-  factory _$$Movie$CopyWith(_$Movie$ value, $Res Function(_$Movie$) then) = __$$Movie$CopyWithImpl<$Res>;
+  factory _$$Movie$CopyWith(_$Movie$ value, $Res Function(_$Movie$) then) =
+      __$$Movie$CopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String title,
+      {int id,
+      String title,
       int year,
       num rating,
       int runtime,
@@ -126,12 +137,15 @@ abstract class _$$Movie$CopyWith<$Res> implements $MovieCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$Movie$CopyWithImpl<$Res> extends _$MovieCopyWithImpl<$Res, _$Movie$> implements _$$Movie$CopyWith<$Res> {
-  __$$Movie$CopyWithImpl(_$Movie$ _value, $Res Function(_$Movie$) _then) : super(_value, _then);
+class __$$Movie$CopyWithImpl<$Res> extends _$MovieCopyWithImpl<$Res, _$Movie$>
+    implements _$$Movie$CopyWith<$Res> {
+  __$$Movie$CopyWithImpl(_$Movie$ _value, $Res Function(_$Movie$) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? title = null,
     Object? year = null,
     Object? rating = null,
@@ -142,6 +156,10 @@ class __$$Movie$CopyWithImpl<$Res> extends _$MovieCopyWithImpl<$Res, _$Movie$> i
     Object? torrents = null,
   }) {
     return _then(_$Movie$(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -182,7 +200,8 @@ class __$$Movie$CopyWithImpl<$Res> extends _$MovieCopyWithImpl<$Res, _$Movie$> i
 @JsonSerializable()
 class _$Movie$ implements Movie$ {
   const _$Movie$(
-      {required this.title,
+      {required this.id,
+      required this.title,
       required this.year,
       required this.rating,
       required this.runtime,
@@ -192,8 +211,11 @@ class _$Movie$ implements Movie$ {
       required final List<Torrent> torrents})
       : _torrents = torrents;
 
-  factory _$Movie$.fromJson(Map<String, dynamic> json) => _$$Movie$FromJson(json);
+  factory _$Movie$.fromJson(Map<String, dynamic> json) =>
+      _$$Movie$FromJson(json);
 
+  @override
+  final int id;
   @override
   final String title;
   @override
@@ -220,7 +242,7 @@ class _$Movie$ implements Movie$ {
 
   @override
   String toString() {
-    return 'Movie(title: $title, year: $year, rating: $rating, runtime: $runtime, summary: $summary, mediumImage: $mediumImage, largeImage: $largeImage, torrents: $torrents)';
+    return 'Movie(id: $id, title: $title, year: $year, rating: $rating, runtime: $runtime, summary: $summary, mediumImage: $mediumImage, largeImage: $largeImage, torrents: $torrents)';
   }
 
   @override
@@ -228,25 +250,38 @@ class _$Movie$ implements Movie$ {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$Movie$ &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.year, year) || other.year == year) &&
             (identical(other.rating, rating) || other.rating == rating) &&
             (identical(other.runtime, runtime) || other.runtime == runtime) &&
             (identical(other.summary, summary) || other.summary == summary) &&
-            (identical(other.mediumImage, mediumImage) || other.mediumImage == mediumImage) &&
-            (identical(other.largeImage, largeImage) || other.largeImage == largeImage) &&
+            (identical(other.mediumImage, mediumImage) ||
+                other.mediumImage == mediumImage) &&
+            (identical(other.largeImage, largeImage) ||
+                other.largeImage == largeImage) &&
             const DeepCollectionEquality().equals(other._torrents, _torrents));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, title, year, rating, runtime, summary, mediumImage, largeImage,
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      title,
+      year,
+      rating,
+      runtime,
+      summary,
+      mediumImage,
+      largeImage,
       const DeepCollectionEquality().hash(_torrents));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$Movie$CopyWith<_$Movie$> get copyWith => __$$Movie$CopyWithImpl<_$Movie$>(this, _$identity);
+  _$$Movie$CopyWith<_$Movie$> get copyWith =>
+      __$$Movie$CopyWithImpl<_$Movie$>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -258,7 +293,8 @@ class _$Movie$ implements Movie$ {
 
 abstract class Movie$ implements Movie {
   const factory Movie$(
-      {required final String title,
+      {required final int id,
+      required final String title,
       required final int year,
       required final num rating,
       required final int runtime,
@@ -269,6 +305,8 @@ abstract class Movie$ implements Movie {
 
   factory Movie$.fromJson(Map<String, dynamic> json) = _$Movie$.fromJson;
 
+  @override
+  int get id;
   @override
   String get title;
   @override
@@ -289,7 +327,8 @@ abstract class Movie$ implements Movie {
   List<Torrent> get torrents;
   @override
   @JsonKey(ignore: true)
-  _$$Movie$CopyWith<_$Movie$> get copyWith => throw _privateConstructorUsedError;
+  _$$Movie$CopyWith<_$Movie$> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 Torrent _$TorrentFromJson(Map<String, dynamic> json) {
@@ -311,13 +350,16 @@ mixin _$Torrent {
 
 /// @nodoc
 abstract class $TorrentCopyWith<$Res> {
-  factory $TorrentCopyWith(Torrent value, $Res Function(Torrent) then) = _$TorrentCopyWithImpl<$Res, Torrent>;
+  factory $TorrentCopyWith(Torrent value, $Res Function(Torrent) then) =
+      _$TorrentCopyWithImpl<$Res, Torrent>;
   @useResult
-  $Res call({String url, String hash, String quality, String type, String size});
+  $Res call(
+      {String url, String hash, String quality, String type, String size});
 }
 
 /// @nodoc
-class _$TorrentCopyWithImpl<$Res, $Val extends Torrent> implements $TorrentCopyWith<$Res> {
+class _$TorrentCopyWithImpl<$Res, $Val extends Torrent>
+    implements $TorrentCopyWith<$Res> {
   _$TorrentCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -361,16 +403,21 @@ class _$TorrentCopyWithImpl<$Res, $Val extends Torrent> implements $TorrentCopyW
 
 /// @nodoc
 abstract class _$$Torrent$CopyWith<$Res> implements $TorrentCopyWith<$Res> {
-  factory _$$Torrent$CopyWith(_$Torrent$ value, $Res Function(_$Torrent$) then) = __$$Torrent$CopyWithImpl<$Res>;
+  factory _$$Torrent$CopyWith(
+          _$Torrent$ value, $Res Function(_$Torrent$) then) =
+      __$$Torrent$CopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String url, String hash, String quality, String type, String size});
+  $Res call(
+      {String url, String hash, String quality, String type, String size});
 }
 
 /// @nodoc
-class __$$Torrent$CopyWithImpl<$Res> extends _$TorrentCopyWithImpl<$Res, _$Torrent$>
+class __$$Torrent$CopyWithImpl<$Res>
+    extends _$TorrentCopyWithImpl<$Res, _$Torrent$>
     implements _$$Torrent$CopyWith<$Res> {
-  __$$Torrent$CopyWithImpl(_$Torrent$ _value, $Res Function(_$Torrent$) _then) : super(_value, _then);
+  __$$Torrent$CopyWithImpl(_$Torrent$ _value, $Res Function(_$Torrent$) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -410,9 +457,14 @@ class __$$Torrent$CopyWithImpl<$Res> extends _$TorrentCopyWithImpl<$Res, _$Torre
 @JsonSerializable()
 class _$Torrent$ implements Torrent$ {
   const _$Torrent$(
-      {required this.url, required this.hash, required this.quality, required this.type, required this.size});
+      {required this.url,
+      required this.hash,
+      required this.quality,
+      required this.type,
+      required this.size});
 
-  factory _$Torrent$.fromJson(Map<String, dynamic> json) => _$$Torrent$FromJson(json);
+  factory _$Torrent$.fromJson(Map<String, dynamic> json) =>
+      _$$Torrent$FromJson(json);
 
   @override
   final String url;
@@ -449,7 +501,8 @@ class _$Torrent$ implements Torrent$ {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$Torrent$CopyWith<_$Torrent$> get copyWith => __$$Torrent$CopyWithImpl<_$Torrent$>(this, _$identity);
+  _$$Torrent$CopyWith<_$Torrent$> get copyWith =>
+      __$$Torrent$CopyWithImpl<_$Torrent$>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -481,7 +534,8 @@ abstract class Torrent$ implements Torrent {
   String get size;
   @override
   @JsonKey(ignore: true)
-  _$$Torrent$CopyWith<_$Torrent$> get copyWith => throw _privateConstructorUsedError;
+  _$$Torrent$CopyWith<_$Torrent$> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 AppState _$AppStateFromJson(Map<String, dynamic> json) {
@@ -491,25 +545,35 @@ AppState _$AppStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$AppState {
   List<Movie> get movies => throw _privateConstructorUsedError;
+  List<int> get liked => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   Movie? get selectedMovie => throw _privateConstructorUsedError;
+  int get page => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $AppStateCopyWith<AppState> get copyWith => throw _privateConstructorUsedError;
+  $AppStateCopyWith<AppState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $AppStateCopyWith<$Res> {
-  factory $AppStateCopyWith(AppState value, $Res Function(AppState) then) = _$AppStateCopyWithImpl<$Res, AppState>;
+  factory $AppStateCopyWith(AppState value, $Res Function(AppState) then) =
+      _$AppStateCopyWithImpl<$Res, AppState>;
   @useResult
-  $Res call({List<Movie> movies, bool isLoading, Movie? selectedMovie});
+  $Res call(
+      {List<Movie> movies,
+      List<int> liked,
+      bool isLoading,
+      Movie? selectedMovie,
+      int page});
 
   $MovieCopyWith<$Res>? get selectedMovie;
 }
 
 /// @nodoc
-class _$AppStateCopyWithImpl<$Res, $Val extends AppState> implements $AppStateCopyWith<$Res> {
+class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
+    implements $AppStateCopyWith<$Res> {
   _$AppStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -521,14 +585,20 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState> implements $AppStateCo
   @override
   $Res call({
     Object? movies = null,
+    Object? liked = null,
     Object? isLoading = null,
     Object? selectedMovie = freezed,
+    Object? page = null,
   }) {
     return _then(_value.copyWith(
       movies: null == movies
           ? _value.movies
           : movies // ignore: cast_nullable_to_non_nullable
               as List<Movie>,
+      liked: null == liked
+          ? _value.liked
+          : liked // ignore: cast_nullable_to_non_nullable
+              as List<int>,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -537,6 +607,10 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState> implements $AppStateCo
           ? _value.selectedMovie
           : selectedMovie // ignore: cast_nullable_to_non_nullable
               as Movie?,
+      page: null == page
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 
@@ -555,32 +629,48 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState> implements $AppStateCo
 
 /// @nodoc
 abstract class _$$AppState$CopyWith<$Res> implements $AppStateCopyWith<$Res> {
-  factory _$$AppState$CopyWith(_$AppState$ value, $Res Function(_$AppState$) then) = __$$AppState$CopyWithImpl<$Res>;
+  factory _$$AppState$CopyWith(
+          _$AppState$ value, $Res Function(_$AppState$) then) =
+      __$$AppState$CopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Movie> movies, bool isLoading, Movie? selectedMovie});
+  $Res call(
+      {List<Movie> movies,
+      List<int> liked,
+      bool isLoading,
+      Movie? selectedMovie,
+      int page});
 
   @override
   $MovieCopyWith<$Res>? get selectedMovie;
 }
 
 /// @nodoc
-class __$$AppState$CopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res, _$AppState$>
+class __$$AppState$CopyWithImpl<$Res>
+    extends _$AppStateCopyWithImpl<$Res, _$AppState$>
     implements _$$AppState$CopyWith<$Res> {
-  __$$AppState$CopyWithImpl(_$AppState$ _value, $Res Function(_$AppState$) _then) : super(_value, _then);
+  __$$AppState$CopyWithImpl(
+      _$AppState$ _value, $Res Function(_$AppState$) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? movies = null,
+    Object? liked = null,
     Object? isLoading = null,
     Object? selectedMovie = freezed,
+    Object? page = null,
   }) {
     return _then(_$AppState$(
       movies: null == movies
           ? _value._movies
           : movies // ignore: cast_nullable_to_non_nullable
               as List<Movie>,
+      liked: null == liked
+          ? _value._liked
+          : liked // ignore: cast_nullable_to_non_nullable
+              as List<int>,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -589,6 +679,10 @@ class __$$AppState$CopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res, _$App
           ? _value.selectedMovie
           : selectedMovie // ignore: cast_nullable_to_non_nullable
               as Movie?,
+      page: null == page
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -596,10 +690,17 @@ class __$$AppState$CopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res, _$App
 /// @nodoc
 @JsonSerializable()
 class _$AppState$ implements AppState$ {
-  const _$AppState$({final List<Movie> movies = const <Movie>[], this.isLoading = true, this.selectedMovie})
-      : _movies = movies;
+  const _$AppState$(
+      {final List<Movie> movies = const <Movie>[],
+      final List<int> liked = const <int>[],
+      this.isLoading = true,
+      this.selectedMovie,
+      this.page = 1})
+      : _movies = movies,
+        _liked = liked;
 
-  factory _$AppState$.fromJson(Map<String, dynamic> json) => _$$AppState$FromJson(json);
+  factory _$AppState$.fromJson(Map<String, dynamic> json) =>
+      _$$AppState$FromJson(json);
 
   final List<Movie> _movies;
   @override
@@ -610,15 +711,27 @@ class _$AppState$ implements AppState$ {
     return EqualUnmodifiableListView(_movies);
   }
 
+  final List<int> _liked;
+  @override
+  @JsonKey()
+  List<int> get liked {
+    if (_liked is EqualUnmodifiableListView) return _liked;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_liked);
+  }
+
   @override
   @JsonKey()
   final bool isLoading;
   @override
   final Movie? selectedMovie;
+  @override
+  @JsonKey()
+  final int page;
 
   @override
   String toString() {
-    return 'AppState(movies: $movies, isLoading: $isLoading, selectedMovie: $selectedMovie)';
+    return 'AppState(movies: $movies, liked: $liked, isLoading: $isLoading, selectedMovie: $selectedMovie, page: $page)';
   }
 
   @override
@@ -627,18 +740,29 @@ class _$AppState$ implements AppState$ {
         (other.runtimeType == runtimeType &&
             other is _$AppState$ &&
             const DeepCollectionEquality().equals(other._movies, _movies) &&
-            (identical(other.isLoading, isLoading) || other.isLoading == isLoading) &&
-            (identical(other.selectedMovie, selectedMovie) || other.selectedMovie == selectedMovie));
+            const DeepCollectionEquality().equals(other._liked, _liked) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            (identical(other.selectedMovie, selectedMovie) ||
+                other.selectedMovie == selectedMovie) &&
+            (identical(other.page, page) || other.page == page));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_movies), isLoading, selectedMovie);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_movies),
+      const DeepCollectionEquality().hash(_liked),
+      isLoading,
+      selectedMovie,
+      page);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$AppState$CopyWith<_$AppState$> get copyWith => __$$AppState$CopyWithImpl<_$AppState$>(this, _$identity);
+  _$$AppState$CopyWith<_$AppState$> get copyWith =>
+      __$$AppState$CopyWithImpl<_$AppState$>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -649,17 +773,27 @@ class _$AppState$ implements AppState$ {
 }
 
 abstract class AppState$ implements AppState {
-  const factory AppState$({final List<Movie> movies, final bool isLoading, final Movie? selectedMovie}) = _$AppState$;
+  const factory AppState$(
+      {final List<Movie> movies,
+      final List<int> liked,
+      final bool isLoading,
+      final Movie? selectedMovie,
+      final int page}) = _$AppState$;
 
   factory AppState$.fromJson(Map<String, dynamic> json) = _$AppState$.fromJson;
 
   @override
   List<Movie> get movies;
   @override
+  List<int> get liked;
+  @override
   bool get isLoading;
   @override
   Movie? get selectedMovie;
   @override
+  int get page;
+  @override
   @JsonKey(ignore: true)
-  _$$AppState$CopyWith<_$AppState$> get copyWith => throw _privateConstructorUsedError;
+  _$$AppState$CopyWith<_$AppState$> get copyWith =>
+      throw _privateConstructorUsedError;
 }

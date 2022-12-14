@@ -3,6 +3,7 @@ part of 'index.dart';
 @freezed
 class Movie with _$Movie {
   const factory Movie({
+    required int id,
     required String title,
     required int year,
     required num rating,

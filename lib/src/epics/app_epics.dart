@@ -11,6 +11,7 @@ class AppEpics {
   Epic<AppState> get epic {
     return combineEpics(<Epic<AppState>>[
       TypedEpic<AppState, GetMovieStart>(_getMovieStart),
+      TypedEpic<AppState, UpdateLikeStart>(_updateLikeStart),
     ]);
   }
 
@@ -19,5 +20,19 @@ class AppEpics {
         .asyncMap((GetMovieStart action) => _api.getMovies(action.page))
         .map((List<Movie> movies) => GetMovies.successful(movies))
         .onErrorReturnWith((Object error, StackTrace stacktrace) => GetMovies.error(error, stacktrace));
+  }
+
+  Stream<dynamic> _updateLikeStart(Stream<UpdateLikeStart> actions, EpicStore<AppState> store) {
+    return actions.flatMap((UpdateLikeStart action)
+    {
+      return _api
+          .updateLike(action.id, like: action.like)
+          .asStream()
+          .map((_) => UpdateLike.successful(action.id, like: action.like))
+          .onErrorReturnWith((Object error, StackTrace stacktrace) => UpdateLike.error(error, stacktrace));
+    });
+
+
+
   }
 }
