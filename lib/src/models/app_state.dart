@@ -7,7 +7,7 @@ class AppState with _$AppState {
     @Default(<int>[]) List<int> liked,
     @Default(true) bool isLoading,
     Movie? selectedMovie,
-    @Default(1)  int page,
+    @Default(1) int page,
   }) = AppState$;
 
   factory AppState.fromJson(Map<dynamic, dynamic> json) => _$AppStateFromJson(Map<String, dynamic>.from(json));

@@ -14,8 +14,7 @@ AppState _getMoviesSuccessful(AppState state, GetMoviesSuccessful action) {
     isLoading: false,
     page: state.page + 1,
     movies: <Movie>[
-      if(state.page != 1)
-      ...state.movies,
+      if (state.page != 1) ...state.movies,
       ...action.movies,
     ],
   );
@@ -40,8 +39,8 @@ AppState _setSelectedMovie(AppState state, SetSelectedMovie action) {
 }
 
 AppState _updateLikeSuccessful(AppState state, UpdateLikeSuccessful action) {
-  final List<int> liked = <int> [...state.liked, if (action.like) action.id];
-  if(!action.like) {
+  final List<int> liked = <int>[...state.liked, if (action.like) action.id];
+  if (!action.like) {
     liked.remove(action.id);
   }
   return state.copyWith(

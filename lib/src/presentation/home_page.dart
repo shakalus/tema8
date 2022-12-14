@@ -23,14 +23,12 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _onScroll() {
-
     final double offset = _controller.offset;
     final double maxScrollExtent = _controller.position.maxScrollExtent;
     if (offset > maxScrollExtent - MediaQuery.of(context).size.height && _store.state.isLoading) {
-       _store.dispatch(GetMovies(_store.state.page));
+      _store.dispatch(GetMovies(_store.state.page));
     }
   }
-
 
   @override
   void dispose() {
@@ -38,11 +36,8 @@ class _HomePageState extends State<HomePage> {
     super.dispose();
   }
 
-
-
   @override
   Widget build(BuildContext context) {
-
     return StoreConnector<AppState, AppState>(
       converter: (Store<AppState> store) => store.state,
       builder: (BuildContext context, AppState state) {
@@ -91,7 +86,7 @@ class _HomePageState extends State<HomePage> {
                   }
                 }
                 final Movie movie = movies[index];
-                final bool isLiked =state.liked.contains(movie.id);
+                final bool isLiked = state.liked.contains(movie.id);
                 return GestureDetector(
                   onTap: () {
                     _store.dispatch(SetSelectedMovie(movie));
@@ -106,14 +101,20 @@ class _HomePageState extends State<HomePage> {
                     height: MediaQuery.of(context).size.height * 0.4,
                     child: Center(
                       child: Stack(
-                        children: <Widget> [ Image.network(
-                          movie.mediumImage,
-                        ),
-                          IconButton(onPressed: () {
-                            _store.dispatch(UpdateLike(movie.id, like: !isLiked));
-                          }, icon: Icon(isLiked ? Icons.favorite : Icons.favorite_border,
-                             color: isLiked ? Colors.red : Colors.white,),),
-                      ],
+                        children: <Widget>[
+                          Image.network(
+                            movie.mediumImage,
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              _store.dispatch(UpdateLike(movie.id, like: !isLiked));
+                            },
+                            icon: Icon(
+                              isLiked ? Icons.favorite : Icons.favorite_border,
+                              color: isLiked ? Colors.red : Colors.white,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),

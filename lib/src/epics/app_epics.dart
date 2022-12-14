@@ -23,16 +23,12 @@ class AppEpics {
   }
 
   Stream<dynamic> _updateLikeStart(Stream<UpdateLikeStart> actions, EpicStore<AppState> store) {
-    return actions.flatMap((UpdateLikeStart action)
-    {
+    return actions.flatMap((UpdateLikeStart action) {
       return _api
           .updateLike(action.id, like: action.like)
           .asStream()
           .map((_) => UpdateLike.successful(action.id, like: action.like))
           .onErrorReturnWith((Object error, StackTrace stacktrace) => UpdateLike.error(error, stacktrace));
     });
-
-
-
   }
 }

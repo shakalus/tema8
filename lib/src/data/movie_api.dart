@@ -26,13 +26,10 @@ class MovieApi {
 
   Future<void> updateLike(int id, {required bool like}) async {
     final String key = '$id';
-    if(like){
+    if (like) {
       await _preferences.setInt(key, id);
-    }
-    else
-    {
+    } else {
       await _preferences.remove(key);
     }
   }
-
 }
