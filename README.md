@@ -1,6 +1,6 @@
 # tema8
 
-Movie app with redux
+Movie app with redux, infinity scroll and likes.
 
 <a href="url"><img src="https://user-images.githubusercontent.com/67394249/207650585-b0d809ed-14b3-4178-ae7e-a130332f1494.png" align="left" height=35% width=35% ></a>
 
